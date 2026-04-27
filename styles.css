@@ -94,7 +94,34 @@ body {
   background: rgba(16, 30, 21, 0.65);
 }
 
+
+.hero-full {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+.chart-video-full {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.hero-full-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(2, 5, 7, 0.94) 0%, rgba(2, 5, 7, 0.78) 34%, rgba(2, 5, 7, 0.42) 64%, rgba(2, 5, 7, 0.18) 100%),
+    radial-gradient(circle at 76% 42%, rgba(136, 245, 112, 0.18), transparent 42%);
+}
+
 .hero {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1.05fr;
   align-items: end;
@@ -211,34 +238,18 @@ h1 span {
 
 .hero-art {
   position: relative;
-  min-height: 620px;
+  min-height: 670px;
   display: flex;
   align-items: end;
-  justify-content: center;
+  justify-content: flex-end;
+  overflow: visible;
 }
 
-.chart-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 18px;
-  opacity: 0.4;
-  mix-blend-mode: screen;
-}
-
-.hero-art-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(120, 234, 98, 0.14), rgba(2, 4, 6, 0.62));
-  border-radius: 18px;
-}
 
 .bull-image {
   position: relative;
   z-index: 1;
-  width: min(100%, 880px);
+  width: min(62vw, 1120px);
   filter: drop-shadow(0 0 40px rgba(120, 234, 98, 0.22));
   animation: baselineRise 3.8s ease-in-out infinite;
   transform-origin: center bottom;
@@ -367,7 +378,11 @@ h1 span {
   }
 
   .hero-art {
-    min-height: 430px;
+    min-height: 470px;
+  }
+
+  .bull-image {
+    width: min(88vw, 760px);
   }
 
   .features,
