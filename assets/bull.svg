@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <radialGradient id="g" cx="55%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#1a2d1a"/>
+      <stop offset="100%" stop-color="#060809"/>
+    </radialGradient>
+    <linearGradient id="horn" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b7ff9b"/>
+      <stop offset="100%" stop-color="#4caf50"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="none"/>
+  <ellipse cx="620" cy="825" rx="450" ry="55" fill="#0f1417" opacity="0.85"/>
+  <path d="M310 800 C 450 690, 790 610, 1030 770 L 1120 835 L 170 835 Z" fill="url(#g)"/>
+  <path d="M650 300 C 760 270, 910 320, 980 430 C 1050 545, 1000 700, 870 730 C 710 765, 560 660, 550 520 C 540 420, 560 335, 650 300 Z" fill="#0b0f12"/>
+  <path d="M620 310 C 690 260, 750 245, 825 268 C 770 295, 735 310, 690 350 Z" fill="#1a2229"/>
+  <path d="M690 300 C 715 210, 780 165, 850 160 C 820 195, 812 255, 760 296 Z" fill="url(#horn)"/>
+  <path d="M615 330 C 540 295, 505 245, 510 190 C 550 220, 595 262, 630 315 Z" fill="url(#horn)"/>
+  <circle cx="700" cy="365" r="7" fill="#83f66f"/>
+</svg>
