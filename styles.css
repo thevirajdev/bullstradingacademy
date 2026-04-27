@@ -217,13 +217,46 @@ h1 span {
   justify-content: center;
 }
 
-.hero-art img {
+.chart-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.hero-art-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(120, 234, 98, 0.14), rgba(2, 4, 6, 0.62));
+  border-radius: 18px;
+}
+
+.bull-image {
+  position: relative;
+  z-index: 1;
   width: min(100%, 880px);
   filter: drop-shadow(0 0 40px rgba(120, 234, 98, 0.22));
+  animation: baselineRise 3.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes baselineRise {
+  0%,
+  100% {
+    transform: translateY(18px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .ticker {
   position: absolute;
+  z-index: 2;
   background: rgba(8, 12, 15, 0.8);
   border: 1px solid #29363c;
   border-radius: 16px;
