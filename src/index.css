@@ -1,0 +1,291 @@
+@font-face {
+    font-family: 'Geist';
+    src: url('/fonts/Geist-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Disket Mono';
+    src: url('/fonts/disket/Disket-Mono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Disket Mono';
+    src: url('/fonts/disket/Disket-Mono-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    min-height: 100%;
+}
+
+:root {
+    --bg-color: #f5f5f5;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    background: transparent !important;
+}
+
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden !important; /* Kill internal scrollbar */
+    position: relative;
+    background: transparent !important; /* Allow fixed background to show */
+    margin: 0;
+    padding: 0;
+}
+
+.fixed-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background: #fff;
+}
+
+.layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.fixed-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+}
+
+.bg-text {
+    z-index: 2;
+    top: 5%;
+}
+
+.bg-text img {
+    width: 110%;
+    height: auto;
+    max-width: 1800px;
+}
+
+/* Mobile Hero Adjustments */
+@media (max-width: 768px) {
+    .hero-container {
+        height: 100vh;
+        background: transparent !important;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .bg-text {
+        top: 8% !important;
+        /* Moved higher as requested */
+        height: auto !important;
+        z-index: 2;
+    }
+
+    .bg-text img {
+        width: 115% !important;
+        height: auto !important;
+        max-width: none !important;
+        margin-left: -3% !important;
+        opacity: 0.65;
+    }
+
+    .men {
+        top: 25% !important;
+        /* Pushed up to accommodate larger scale */
+        bottom: auto !important;
+        height: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        z-index: 5;
+    }
+
+    .men img {
+        width: 100% !important;
+        height: 60vh !important;
+        /* Increased height explicitly */
+        margin: 0 !important;
+        object-fit: cover;
+        /* Ensuring it fills the height without excessive width */
+        object-position: center bottom;
+    }
+
+    .join-container {
+        display: block !important;
+        right: 8% !important;
+        top: 58% !important;
+        /* Moved slightly higher as requested */
+        bottom: auto !important;
+        opacity: 0;
+        z-index: 120;
+    }
+
+    .join-coin {
+        width: 120px !important;
+    }
+
+    .info-content {
+        position: absolute !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        /* Pinned to bottom to prevent being pushed off */
+        top: auto !important;
+        width: auto !important;
+        text-align: left !important;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 24px 20px 40px 20px;
+        /* Ample padding to ensure NO cropping */
+        border-radius: 24px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        z-index: 110;
+    }
+
+    .welcome-title {
+        font-size: 18px !important;
+        line-height: 1.1 !important;
+        margin-bottom: 8px;
+        color: #000;
+    }
+
+    .info-content .desc {
+        font-size: 10px !important;
+        max-width: 100%;
+        margin: 0;
+        opacity: 0.8;
+        color: #333;
+        line-height: 1.4;
+    }
+}
+
+.men {
+    z-index: 10;
+    align-items: flex-end;
+}
+
+.men img {
+    width: 70%;
+    height: auto;
+    margin-bottom: -110px;
+}
+
+.single-wipe-container {
+    clip-path: inset(100% 0 0 0);
+}
+
+.info-content {
+    position: absolute;
+    left: 4%;
+    bottom: 8%;
+    width: 320px;
+    z-index: 50;
+    pointer-events: auto;
+    text-align: left;
+}
+
+.welcome-title {
+    font-family: 'Disket Mono', monospace;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: #000;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.info-content .desc {
+    font-family: 'Disket Mono', monospace;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #111;
+    font-weight: 400;
+}
+
+.join-container {
+    position: absolute;
+    right: 5%;
+    bottom: 8%;
+    z-index: 50;
+    opacity: 0;
+}
+
+.join-coin {
+    display: block;
+    width: 240px;
+    pointer-events: auto;
+}
+
+.join-coin img {
+    width: 100%;
+    height: auto;
+}
+
+/* Pricing Component Variables */
+:root {
+    --destructive-foreground: oklch(1 0 0);
+    --color-destructive-foreground: var(--destructive-foreground);
+}
+
+.dark {
+    --destructive-foreground: oklch(1 0 0);
+}
+
+@theme inline {
+    --color-destructive-foreground: oklch(1 0 0);
+    --color-color-destructive-foreground: var(--color-destructive-foreground);
+}
+
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
