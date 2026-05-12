@@ -12,10 +12,12 @@ import { PrivacyPolicy } from '@/pages/legal/privacy'
 import { RefundPolicy } from '@/pages/legal/refund'
 import { Disclaimer } from '@/pages/legal/disclaimer'
 import ScrollToTop from '@/components/layout/scroll-to-top'
+import { Preloader } from '@/components/ui/preloader'
 
 function App() {
   return (
     <Router>
+      <Preloader />
       <ScrollToTop />
       <MainLayout>
         <Routes>

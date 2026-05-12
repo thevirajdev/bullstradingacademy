@@ -289,3 +289,23 @@ img {
     -webkit-user-drag: none;
     user-drag: none;
 }
+
+/* Hide UI during preloading */
+.is-loading nav,
+.is-loading .navbar-container {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+nav, .navbar-container {
+  transition: opacity 1.2s ease-out;
+}
+
+.is-loading .fixed-overlay {
+  opacity: 0;
+}
+
+.fixed-overlay {
+  transition: opacity 1.5s ease-in-out;
+}

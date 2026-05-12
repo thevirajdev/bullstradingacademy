@@ -23,46 +23,65 @@ export function Home() {
   const joinContainerRef = useRef(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" }
-    })
+    const startAnimations = () => {
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" }
+      })
 
-    // Step 1: BG TEXT Reveal
-    tl.to(bgTextRef.current, {
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px)",
-      duration: 2,
-      startAt: { opacity: 0, scale: 1.1, filter: "blur(10px)" }
-    })
+      // Step 1: BG TEXT Reveal
+      tl.to(bgTextRef.current, {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 2,
+        startAt: { opacity: 0, scale: 1.1, filter: "blur(10px)" }
+      })
 
-    // Step 2: Men Reveal
-    tl.to(menRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1.5,
-      startAt: { opacity: 0, y: 150 },
-      delay: -1.2
-    })
+      // Step 2: Men Reveal
+      tl.to(menRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        startAt: { opacity: 0, y: 150 },
+        delay: -1.2
+      })
 
-    // Step 3: Text Wipe
-    tl.to(wipeContainerRef.current, {
-      clipPath: "inset(0% 0 0 0)",
-      duration: 1,
-      ease: "power2.inOut",
-      delay: -0.4
-    })
+      // Step 3: Text Wipe (Enhanced)
+      tl.to(wipeContainerRef.current, {
+        clipPath: "inset(0% 0 0% 0)",
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.inOut",
+        startAt: { y: 30, opacity: 0, clipPath: "inset(100% 0 0% 0)" },
+        delay: -0.5
+      })
 
-    // Step 4: Join Button (Coin) - Appears last
-    tl.to(joinContainerRef.current, {
-      opacity: 1,
-      scale: 1,
-      duration: 1,
-      ease: "elastic.out(1, 0.7)",
-      startAt: { opacity: 0, scale: 0.1 },
-      delay: 0.2 // Explicit delay to ensure it's last
-    })
+      // Step 4: Join Button (Coin) - Appears last
+      tl.to(joinContainerRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "elastic.out(1, 0.7)",
+        startAt: { opacity: 0, scale: 0.1 },
+        delay: 0.2
+      })
+    }
 
+    // Listen for preloader completion
+    window.addEventListener('preloader-finished', startAnimations)
+
+    // Fallback in case preloader is skipped or already done
+    const timer = setTimeout(() => {
+      if (gsap.getTweensOf(bgTextRef.current).length === 0) {
+        startAnimations()
+      }
+    }, 4000)
+
+    return () => {
+      window.removeEventListener('preloader-finished', startAnimations)
+      clearTimeout(timer)
+    }
   }, [])
 
   return (
@@ -83,7 +102,11 @@ export function Home() {
 
         {/* Layer 3: Info Content */}
         <div className="info-content">
-          <div className="single-wipe-container" ref={wipeContainerRef}>
+          <div 
+            className="single-wipe-container" 
+            ref={wipeContainerRef} 
+            style={{ clipPath: "inset(0% 0 100% 0)", opacity: 0 }}
+          >
             <h1 className="welcome-title font-disket">
               WELCOME TO THE BULLS<br />
               TRADING ACADEMY!
@@ -99,7 +122,7 @@ export function Home() {
         </div>
 
         {/* Layer 4: Join Coin */}
-        <div className="join-container" ref={joinContainerRef} style={{ opacity: 0 }}>
+        <div className="join-container" ref={joinContainerRef} style={{ opacity: 0, scale: 0.1 }}>
           <a href="#contact" className="join-coin">
             <img src="/assets/joinbutton.png" alt="JOIN" />
           </a>
